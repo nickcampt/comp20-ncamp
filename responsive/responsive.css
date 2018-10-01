@@ -1,0 +1,14 @@
+/*
+If the browser screen width is greater than 1200, display the first image on the top row (i.e., "Airplane Safety").
+If the browser screen width is greater than 1000 pixels but less than or equal to 1200 pixels, display the second on the top row (i.e., "Elevator Safety").
+If the browser screen width is greater than 800 pixels but less than or equal to 1000 pixels, display the third image on the top row (i.e., "Computerized Voting").
+If the browser screen width is greater than 600 pixels but less than or equal to 800 pixels, display the first image on the second row (i.e., "Wait, Really?").
+If the browser screen width is less than or equal to 600 pixels, display the last image, bottom-right (i.e., "Blockchain").
+*/
+
+
+.software {
+  width:1204px;
+  height:1211px;
+  background:url(software.png) 0 0px;}
+}
