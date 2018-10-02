@@ -6,54 +6,21 @@ If the browser screen width is greater than 600 pixels but less than or equal to
 If the browser screen width is less than or equal to 600 pixels, display the last image, bottom-right (i.e., "Blockchain").
 */
 
-/* Blockchain Panel */
-@media screen and (min-width: 0px;){
-  .software {
-    width:430px;
-    height:560px;
-    background:url(software.png) 0 0px;} /* need to change these px values */
-  }
-}
-
-/* Wait, Really Panel */
-@media screen and (min-width: 601px;){
-  .software {
-    width:1204px;
-    height:1211px;
-    background:url(software.png) 0 0px;}
-  }
-}
-
-/* Computerized Voting Panel */
-@media screen and (min-width: 801px;){
-  .software {
-    width:1204px;
-    height:1211px;
-    background:url(software.png) 0 0px;}
-  }
-}
-
-/* Elevator Safety Panel */
-@media screen and (min-width: 1001px;){
-  .software {
-    width:445px;
-    height:575px;
-    background:url(software.png) 0 0px;}
-  }
-}
-
-/* Airplane Safety Panel */
-@media screen and (min-width: 1201px;) {
-  .software {
-    width:430px;
-    height:570px;
-    background:url(software.png) 0 0px;}
-  }
-}
 
 /* this shows the first pannel when its all thats in the .css file */
-.software {
-  width:430px;
-  height:575px;
-  background:url(software.png) 0 0px;}
+
+@media screen and (min-width: 1201px) {
+  .software {
+    width:430px;
+    height:575px;
+    background:url(software.png) 0px 0px;}
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1200px){
+  .software {
+    width:420px;
+    height:575px;
+    background:url(software.png) -450px 0px;
+  }
 }
