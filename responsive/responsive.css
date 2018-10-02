@@ -13,6 +13,7 @@ If the browser screen width is less than or equal to 600 pixels, display the las
     width:430px;
     height:575px;
     background:url(software.png) 0px 0px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -22,6 +23,7 @@ If the browser screen width is less than or equal to 600 pixels, display the las
     width:420px;
     height:575px;
     background:url(software.png) -450px 0px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -31,6 +33,7 @@ If the browser screen width is less than or equal to 600 pixels, display the las
     width:335px;
     height:575px;
     background:url(software.png) -870px 0px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -40,6 +43,7 @@ If the browser screen width is less than or equal to 600 pixels, display the las
     width: 720px;
     height: 630px;
     background:url(software.png) 0px -585px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -49,5 +53,6 @@ If the browser screen width is less than or equal to 600 pixels, display the las
     width: 485px;
     height: 630px;
     background:url(software.png) -720px -585px;
+    background-repeat: no-repeat;
   }
 }
