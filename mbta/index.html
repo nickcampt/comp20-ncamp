@@ -2,7 +2,10 @@
 <!-- make sure to just request once for the schedule data -->
 <!-- but don't forget that the schedule will become stale -->
 <!-- maybe, each time you click a marker you download / request the data? -->
-<!-- Every station click is a single xmlhttp request--> 
+<!-- Every station click is a single xmlhttp request-->
+<!-- don't do this lol do the one request -->
+<!-- host a server using python -m SimpleHTTPServer 8000 -->
+<!-- connect to it using localhost:8000 in an incognito window -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +14,10 @@
   <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 
-<body>
+<body onload="loadFunc()">
+<div id="testID">Testing</div>
 
-<script>
-</script>
+<script src="jscript.js"></script>
 
 </body>
 </html>
