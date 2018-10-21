@@ -42,19 +42,7 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
   }
-}
-
-
-
-/*   TODO DELETE
-var Icon = new google.maps.Marker({
-  position: {lat: , lng: },
-  map: map,
-  title: ''
-});
-*/
-function makeIcons() {
-
+  
   var sstatIcon = new google.maps.Marker({
     position: {lat: 42.352271, lng: 71.05524200000001 },
     map: map,
