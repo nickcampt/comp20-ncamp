@@ -81,7 +81,7 @@ function makeIcons() {
 
 
   var jfkIcon = new google.maps.Marker({
-    position: {lat 42.320685: , lng: -71.052391},
+    position: {lat: 42.320685: , lng: -71.052391},
     map: map,
     title: 'JFK/UMass'
   });
