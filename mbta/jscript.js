@@ -4,6 +4,7 @@
 /* access-control-allow-origin */ /* this means the server can allow cross origin requests 8?
 /* the above is on the SERVER level so this is in assignment number 3 */
 var map, infoWindowin, localLat, localLong;
+var iconImageData = "https://cdn130.picsart.com/272354380029211.png?r1024x1024";
 
 /*
  * The following "get current location" code is from the
@@ -17,7 +18,7 @@ function initMap() {
    */
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 42.4092844, lng: -71.1121079},
-    zoom: 6
+    zoom: 12
   });
 
   infoWindow = new google.maps.InfoWindow;
@@ -31,7 +32,7 @@ function initMap() {
       localLat = position.coords.latitude;
       localLong = position.coords.longitude;
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('Run.');
       infoWindow.open(map);
       map.setCenter(pos);
       }, function() {
@@ -42,28 +43,38 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
   }
-  
+
+  var sstatIcon = new google.maps.Marker({
+    position: {lat: localLat, lng: localLong },
+    map: map,
+    title: 'Your Location'
+  });
+
   var sstatIcon = new google.maps.Marker({
     position: {lat: 42.352271, lng: 71.05524200000001 },
     map: map,
+    icon: iconImageData,
     title: 'South Station'
   });
 
   var andrwIcon = new google.maps.Marker({
     position: {lat: 42.330154, lng: -71.057655},
     map: map,
+    icon: iconImageData,
     title: 'Andrew'
   });
 
   var portrIcon = new google.maps.Marker({
     position: {lat: 42.3884, lng: -71.11914899999999},
     map: map,
+    icon: iconImageData,
     title: 'Porter Square'
   });
 
   var harsqIcon = new google.maps.Marker({
     position: {lat: 42.373362, lng:  -71.118956},
     map: map,
+    icon: iconImageData,
     title: 'Harvard Square'
   });
 
@@ -71,6 +82,7 @@ function initMap() {
   var jfkIcon = new google.maps.Marker({
     position: {lat: 42.320685, lng: -71.052391},
     map: map,
+    icon: iconImageData,
     title: 'JFK/UMass'
   });
 
@@ -78,30 +90,35 @@ function initMap() {
   var shmnlIcon = new google.maps.Marker({
     position: {lat:  42.31129, lng: -71.053331},
     map: map,
+    icon: iconImageData,
     title: 'Savin Hill'
   });
 
   var pktrmIcon = new google.maps.Marker({
     position: {lat: 42.35639457, lng: -71.0624242},
     map: map,
+    icon: iconImageData,
     title: 'Park Street'
   });
 
   var brdwyIcon = new google.maps.Marker({
     position: {lat: 42.342622, lng: -71.056967},
     map: map,
+    icon: iconImageData,
     title: 'Broadway'
   });
 
   var nqncyIcon = new google.maps.Marker({
     position: {lat: 42.275275, lng: -71.029583},
     map: map,
+    icon: iconImageData,
     title: 'North Quincy'
   });
 
   var smmnlIcon = new google.maps.Marker({
     position: {lat: 42.29312583, lng: -71.06573796000001},
     map: map,
+    icon: iconImageData,
     title: 'Shawmut'
   });
 
@@ -114,66 +131,77 @@ function initMap() {
   var alfclIcon = new google.maps.Marker({
     position: {lat: 42.395428, lng: -71.142483},
     map: map,
+    icon: iconImageData,
     title: 'Alewife'
   });
 
   var knnclIcon = new google.maps.Marker({
     position: {lat: 42.36249079, lng:  -71.08617653},
     map: map,
+    icon: iconImageData,
     title: 'Kendall/MIT'
   });
 
   var chmnlIcon = new google.maps.Marker({
     position: {lat: 42.361166, lng: -71.070628},
     map: map,
+    icon: iconImageData,
     title: 'Charles/MGH'
   });
 
   var wnxgdIcon = new google.maps.Marker({
     position: {lat: 42.355518, lng: -71.060225},
     map: map,
+    icon: iconImageData,
     title: 'Downtown Crossing'
   });
 
   var qnctrIcon = new google.maps.Marker({
     position: {lat: 42.251809, lng:- 71.005409},
     map: map,
+    icon: iconImageData,
     title: 'Quincy Center'
   });
 
   var qamnlIcon = new google.maps.Marker({
     position: {lat: 42.233391, lng: -71.007153},
     map: map,
+    icon: iconImageData,
     title: 'Quincy Adams'
   });
 
   var asmnlIcon = new google.maps.Marker({
     position: {lat: 42.284652, lng: -71.06448899999999},
     map: map,
+    icon: iconImageData,
     title: 'Ashmont'
   });
 
   var wlstaIcon = new google.maps.Marker({
     position: {lat: 42.2665139, lng: -71.0203369},
     map: map,
+    icon: iconImageData,
     title: 'Wollaston'
   });
 
   var fldcrIcon = new google.maps.Marker({
     position: {lat: 42.300093, lng: -71.061667},
     map: map,
+    icon: iconImageData,
     title: 'Fields Corner'
   });
 
   var cntsqIcon = new google.maps.Marker({
     position: {lat: 42.365486, lng: -71.103802},
     map: map,
+    icon: iconImageData,
     title: 'Central Square '
   });
 
   var brntnIcon = new google.maps.Marker({
     position: {lat: 42.2078543, lng:  -71.0011385},
     map: map,
+    icon: iconImageData,
     title: 'Braintree'
   });
 
