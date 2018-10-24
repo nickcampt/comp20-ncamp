@@ -11,12 +11,12 @@ var yourIcon, sstatIcon, andrwIcon, portrIcon, harsqIcon, jfkIcon, shmnlIcon, pk
 
 function initMap() {
 /* center on south station */
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 42.352271, lng: -71.05524200000001},
-    zoom: 12
-  });
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 42.352271, lng: -71.05524200000001},
+        zoom: 12
+    });
 
-  infoWindow = new google.maps.InfoWindow;
+    infoWindow = new google.maps.InfoWindow;
 
 
     /*
@@ -25,17 +25,25 @@ function initMap() {
      * https://developers.google.com/maps/documentation/javascript/geolocation
      */
     if (navigator.geolocation) {
+        console.log("start of if nav")
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-            };
+            }; /* get the lat and lng of your location */
         localLat = position.coords.latitude;
         localLong = position.coords.longitude;
-        infoWindow.setPosition(pos); /* remove this from here and use for on icon click */
-        infoWindow.setContent('Run.');
-        infoWindow.open(map);
-        map.setCenter(pos);
+        console.log(localLat);
+        map.setCenter(pos); /* set center where you are */ 
+
+        console.log(localLat); /* they're undefined!! */
+        console.log(localLong);
+        yourIcon = new google.maps.Marker({
+            position: {lat: localLat, lng: localLong },
+            map: map,
+            title: 'Your Location'
+        });
+
             }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
@@ -45,11 +53,12 @@ function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 
-  /* 
-   * code grabbed from google tutorial site: 
-   * https://developers.google.com/maps/documentation/javascript/markers 
-   */
-    
+
+
+    /* 
+    * code for creating icons grabbed from google tutorial site: 
+    * https://developers.google.com/maps/documentation/javascript/markers 
+    */
     iconImageData = {
         url: 'https://cdn130.picsart.com/272354380029211.png?c256x256',
         scaledSize: new google.maps.Size(30, 30),
@@ -150,6 +159,8 @@ function initMap() {
 
     davisIcon = new google.maps.Marker({
         position: {lat: 42.39674, lng: -71.121815},
+        icon: iconImageData,
+        shape: iconShapeData,
         map: map,
         title: 'Davis'
     });
