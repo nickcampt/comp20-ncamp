@@ -8,6 +8,23 @@ var map, infoWindow, localLat, localLong;
 var yourIcon, sstatIcon, andrwIcon, portrIcon, harsqIcon, jfkIcon, shmnlIcon, pktrmIcon, brdwyIcon, nqncyIcon, smmnlIcon, davisIcon, alfclIcon, knnclIcon, chmnlIcon, dwnxgIcon, qnctrIcon, asmnlIcon, wlstaIcon, fldcrIcon, cntsqIcon, brntnIcon;
 
 
+function testJSON(data){
+    var logString = data;
+    console.log(logString);
+}
+
+function testXMLHttoRequest(){
+    console.log("requesting using stop_id=place-davis");
+    var requestURL = "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis";
+    var request = new XMLHTttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function(){
+        var responseData = request.response;
+        testJSON(responseData)
+    }
+}
 
 function initMap() {
 /* center on south station */
@@ -70,12 +87,6 @@ function initMap() {
         coords: [1, 1, 1, 30, 30, 30, 30, 1],
         type: 'poly'
     };
-
-    yourIcon = new google.maps.Marker({
-        position: {lat: localLat, lng: localLong },
-        map: map,
-        title: 'Your Location'
-    });
 
     sstatIcon = new google.maps.Marker({
         position: {lat: 42.352271, lng: 71.05524200000001 },
@@ -254,3 +265,5 @@ function initMap() {
     });
 
 }
+
+testXMLHttoRequest()
