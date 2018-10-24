@@ -52,7 +52,11 @@ function testXMLHttpRequest(){
 }
 
 function nearestStation(){
-    console.log("clikkk")
+    console.log("clikkk");
+}
+
+function stationData(stopID) {
+    console.log(stopID);
 }
 
 function initMap() {
@@ -123,6 +127,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'South Station'
      });
+    sstatIcon.addListener('click', function() {
+            stationData("place-sstat");
+    });
 
     andrwIcon = new google.maps.Marker({
         position: {lat: andrwLl[0], lng: andrwLl[1]},
@@ -130,6 +137,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Andrew'
+    });
+    andrwIcon.addListener('click', function() {
+            stationData("place-andrw");
     });
 
     portrIcon = new google.maps.Marker({
@@ -139,6 +149,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Porter Square'
     });
+    portrIcon.addListener('click', function() {
+            stationData("place-portr");
+    });
 
     harsqIcon = new google.maps.Marker({
         position: {lat: harsqLl[0], lng:  harsqLl[1]},
@@ -146,6 +159,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Harvard Square'
+    });
+    harsqIcon.addListener('click', function() {
+            stationData("place-harsq");
     });
 
     jfkIcon = new google.maps.Marker({
@@ -155,6 +171,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'JFK/UMass'
     });
+    jfkIcon.addListener('click', function() {
+            stationData("place-jfk");
+    });
 
     shmnlIcon = new google.maps.Marker({
         position: {lat:  shmnlLl[0], lng: shmnlLl[1]},
@@ -162,6 +181,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Savin Hill'
+    });
+    shmnlIcon.addListener('click', function() {
+            stationData("place-shmnl");
     });
 
     pktrmIcon = new google.maps.Marker({
@@ -171,6 +193,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Park Street'
     });
+    pktrmIcon.addListener('click', function() {
+            stationData("place-pktrm");
+    });
 
     brdwyIcon = new google.maps.Marker({
         position: {lat: brdwyLl[0], lng: brdwyLl[1]},
@@ -178,6 +203,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Broadway'
+    });
+    brdwyIcon.addListener('click', function() {
+            stationData("place-brdwy");
     });
 
     nqncyIcon = new google.maps.Marker({
@@ -187,6 +215,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'North Quincy'
     });
+    nqncyIcon.addListener('click', function() {
+            stationData("place-nqncy");
+    });
 
     smmnlIcon = new google.maps.Marker({
         position: {lat: smmnlLl[0], lng: smmnlLl[1]},
@@ -194,6 +225,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Shawmut'
+    });
+    nqncyIcon.addListener('click', function() {
+            stationData("place-nqncy");
     });
 
     davisIcon = new google.maps.Marker({
@@ -203,6 +237,9 @@ function initMap() {
         map: map,
         title: 'Davis'
     });
+    davisIcon.addListener('click', function() {
+            stationData("place-davis");
+    });
 
     alfclIcon = new google.maps.Marker({
         position: {lat: alfclLl[0], lng: alfclLl[1]},
@@ -210,6 +247,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Alewife'
+    });
+    alfclIcon.addListener('click', function() {
+            stationData("place-alfcl");
     });
 
     knnclIcon = new google.maps.Marker({
@@ -219,6 +259,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Kendall/MIT'
     });
+    knnclIcon.addListener('click', function() {
+            stationData("place-knncl");
+    });
 
     chmnlIcon = new google.maps.Marker({
         position: {lat: chmnlLl[0], lng: chmnlLl[1]},
@@ -226,6 +269,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Charles/MGH'
+    });
+    chmnlIcon.addListener('click', function() {
+            stationData("place-chmnl");
     });
 
     dwnxgIcon = new google.maps.Marker({
@@ -235,6 +281,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Downtown Crossing'
     });
+    dwnxgIcon.addListener('click', function() {
+            stationData("place-dwnxg");
+    });
 
     qnctrIcon = new google.maps.Marker({
         position: {lat: qnctrLl[0], lng: qnctrLl[1]},
@@ -242,6 +291,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Quincy Center'
+    });
+    qnctrIcon.addListener('click', function() {
+            stationData("place-qnctr");
     });
 
     qamnlIcon = new google.maps.Marker({
@@ -251,6 +303,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Quincy Adams'
     });
+    qamnlIcon.addListener('click', function() {
+            stationData("place-qamnl");
+    });
 
     asmnlIcon = new google.maps.Marker({
         position: {lat: asmnlLl[0], lng: asmnlLl[1]},
@@ -258,6 +313,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Ashmont'
+    });
+    asmnlIcon.addListener('click', function() {
+            stationData("place-asmnl");
     });
 
     wlstaIcon = new google.maps.Marker({
@@ -267,6 +325,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Wollaston'
     });
+    wlstaIcon.addListener('click', function() {
+            stationData("place-wlsta");
+    });
 
     fldcrIcon = new google.maps.Marker({
         position: {lat: fldcrLl[0], lng: fldcrLl[1]},
@@ -274,6 +335,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Fields Corner'
+    });
+    fldcrIcon.addListener('click', function() {
+            stationData("place-fldcr");
     });
 
     cntsqIcon = new google.maps.Marker({
@@ -283,6 +347,9 @@ function initMap() {
         shape: iconShapeData,
         title: 'Central Square '
     });
+    cntsqIcon.addListener('click', function() {
+            stationData("place-cntsq");
+    });
 
     brntnIcon = new google.maps.Marker({
         position: {lat: brntnLl[0], lng: brntnLl[1]},
@@ -290,6 +357,9 @@ function initMap() {
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Braintree'
+    });
+    brntnIcon.addListener('click', function() {
+            stationData("place-brntn");
     });
 
 
