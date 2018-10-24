@@ -10,7 +10,7 @@ var sstatLl = [42.352271, -71.05524200000001];
 var andrwLl = [42.330154, -71.057655];
 var portrLl = [42.3884, -71.11914899999999];
 var harsqLl = [42.373362, -71.118956];
-var jfkLl = [42.320685, -71.052391];
+var jfkLl   = [42.320685, -71.052391];
 var shmnlLl = [42.31129, -71.053331];
 var pktrmLl = [42.35639457, -71.0624242];
 var brdwyLl = [42.342622, -71.056967];
@@ -29,8 +29,8 @@ var fldcrLl = [42.300093, -71.061667];
 var cntsqLl = [42.365486, -71.103802];
 var brntnLl = [42.2078543, -71.0011385];
 
-var redlineCoords = [];
-
+var redlineCoords1 = [];
+var redLineCoords2 = [];
 
 function testJSON(data){
     var logString = data;
@@ -39,8 +39,7 @@ function testJSON(data){
 
 }
 
-function testXMLHttoRequest(){
-    console.log("requesting using stop_id=place-davis");
+function testXMLHttpRequest(){
     var requestURL = "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis";
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);
@@ -50,6 +49,10 @@ function testXMLHttoRequest(){
         var responseData = request.response;
         testJSON(responseData)
     }
+}
+
+function nearestStation(){
+    console.log("clikkk")
 }
 
 function initMap() {
@@ -68,7 +71,6 @@ function initMap() {
      * https://developers.google.com/maps/documentation/javascript/geolocation
      */
     if (navigator.geolocation) {
-        console.log("start of if nav")
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
                 lat: position.coords.latitude,
@@ -76,15 +78,15 @@ function initMap() {
             }; /* get the lat and lng of your location */
         localLat = position.coords.latitude;
         localLong = position.coords.longitude;
-        console.log(localLat);
         map.setCenter(pos); /* set center where you are */ 
-
-        console.log(localLat); /* they're undefined!! */
-        console.log(localLong);
         yourIcon = new google.maps.Marker({
             position: {lat: localLat, lng: localLong },
             map: map,
             title: 'Your Location'
+        });
+
+        yourIcon.addListener('click', function() {
+            nearestStation();
         });
 
             }, function() {
@@ -341,4 +343,4 @@ function initMap() {
 
 }
 
-testXMLHttoRequest()
+testXMLHttpRequest()

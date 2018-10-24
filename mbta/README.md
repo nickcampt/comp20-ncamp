@@ -1,6 +1,6 @@
 Nick Camp
 Assignment 2
-Time Spent: about 10 hours
+Time Spent: about 15 hours
 
 What has been completed:
 The map shall take up the entire page. DONE
