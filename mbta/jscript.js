@@ -29,6 +29,9 @@ var fldcrLl = [42.300093, -71.061667];
 var cntsqLl = [42.365486, -71.103802];
 var brntnLl = [42.2078543, -71.0011385];
 
+var redlineCoords = [];
+
+
 function testJSON(data){
     var logString = data;
     console.log(logString);
@@ -120,7 +123,7 @@ function initMap() {
      });
 
     andrwIcon = new google.maps.Marker({
-        position: {lat: 42.330154, lng: -71.057655},
+        position: {lat: andrwLl[0], lng: andrwLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -128,7 +131,7 @@ function initMap() {
     });
 
     portrIcon = new google.maps.Marker({
-        position: {lat: 42.3884, lng: -71.11914899999999},
+        position: {lat: portrLl[0], lng: portrLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -136,7 +139,7 @@ function initMap() {
     });
 
     harsqIcon = new google.maps.Marker({
-        position: {lat: 42.373362, lng:  -71.118956},
+        position: {lat: harsqLl[0], lng:  harsqLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -144,7 +147,7 @@ function initMap() {
     });
 
     jfkIcon = new google.maps.Marker({
-        position: {lat: 42.320685, lng: -71.052391},
+        position: {lat: jfkLl[0], lng: jfkLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -152,7 +155,7 @@ function initMap() {
     });
 
     shmnlIcon = new google.maps.Marker({
-        position: {lat:  42.31129, lng: -71.053331},
+        position: {lat:  shmnlLl[0], lng: shmnlLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -160,7 +163,7 @@ function initMap() {
     });
 
     pktrmIcon = new google.maps.Marker({
-        position: {lat: 42.35639457, lng: -71.0624242},
+        position: {lat: pktrmLl[0], lng: pktrmLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -168,7 +171,7 @@ function initMap() {
     });
 
     brdwyIcon = new google.maps.Marker({
-        position: {lat: 42.342622, lng: -71.056967},
+        position: {lat: brdwyLl[0], lng: brdwyLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -176,7 +179,7 @@ function initMap() {
     });
 
     nqncyIcon = new google.maps.Marker({
-        position: {lat: 42.275275, lng: -71.029583},
+        position: {lat: nqncyLl[0], lng: nqncyLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -184,7 +187,7 @@ function initMap() {
     });
 
     smmnlIcon = new google.maps.Marker({
-        position: {lat: 42.29312583, lng: -71.06573796000001},
+        position: {lat: smmnlLl[0], lng: smmnlLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -192,7 +195,7 @@ function initMap() {
     });
 
     davisIcon = new google.maps.Marker({
-        position: {lat: 42.39674, lng: -71.121815},
+        position: {lat: davisLl[0], lng: davisLl[1]},
         icon: iconImageData,
         shape: iconShapeData,
         map: map,
@@ -200,7 +203,7 @@ function initMap() {
     });
 
     alfclIcon = new google.maps.Marker({
-        position: {lat: 42.395428, lng: -71.142483},
+        position: {lat: alfclLl[0], lng: alfclLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -208,7 +211,7 @@ function initMap() {
     });
 
     knnclIcon = new google.maps.Marker({
-        position: {lat: 42.36249079, lng:  -71.08617653},
+        position: {lat: knnclLl[0], lng:  knnclLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -216,7 +219,7 @@ function initMap() {
     });
 
     chmnlIcon = new google.maps.Marker({
-        position: {lat: 42.361166, lng: -71.070628},
+        position: {lat: chmnlLl[0], lng: chmnlLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -224,7 +227,7 @@ function initMap() {
     });
 
     dwnxgIcon = new google.maps.Marker({
-        position: {lat: 42.355518, lng: -71.060225},
+        position: {lat: dwnxgLl[0], lng: dwnxgLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -232,7 +235,7 @@ function initMap() {
     });
 
     qnctrIcon = new google.maps.Marker({
-        position: {lat: 42.251809, lng:- 71.005409},
+        position: {lat: qnctrLl[0], lng: qnctrLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -240,7 +243,7 @@ function initMap() {
     });
 
     qamnlIcon = new google.maps.Marker({
-        position: {lat: 42.233391, lng: -71.007153},
+        position: {lat: qamnlLl[0], lng: qamnlLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -248,7 +251,7 @@ function initMap() {
     });
 
     asmnlIcon = new google.maps.Marker({
-        position: {lat: 42.284652, lng: -71.06448899999999},
+        position: {lat: asmnlLl[0], lng: asmnlLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -256,7 +259,7 @@ function initMap() {
     });
 
     wlstaIcon = new google.maps.Marker({
-        position: {lat: 42.2665139, lng: -71.0203369},
+        position: {lat: wlstaLl[0], lng: wlstaLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -264,7 +267,7 @@ function initMap() {
     });
 
     fldcrIcon = new google.maps.Marker({
-        position: {lat: 42.300093, lng: -71.061667},
+        position: {lat: fldcrLl[0], lng: fldcrLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -272,7 +275,7 @@ function initMap() {
     });
 
     cntsqIcon = new google.maps.Marker({
-        position: {lat: 42.365486, lng: -71.103802},
+        position: {lat: cntsqLl[0], lng: cntsqLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
@@ -280,12 +283,47 @@ function initMap() {
     });
 
     brntnIcon = new google.maps.Marker({
-        position: {lat: 42.2078543, lng:  -71.0011385},
+        position: {lat: brntnLl[0], lng: brntnLl[1]},
         map: map,
         icon: iconImageData,
         shape: iconShapeData,
         title: 'Braintree'
     });
+
+    redLineCoords = [
+        {lat: sstatLl[0], lng: sstatLl[1]},
+        {lat: andrwLl[0], lng: andrwLl[1]},
+        {lat: portrLl[0], lng: portrLl[1]},
+        {lat: harsqLl[0], lng: harsqLl[1]},
+        {lat: jfkLl[0], lng: jfkLl[1]},
+        {lat: shmnlLl[0], lng: shmnlLl[1]},
+        {lat: pktrmLl[0], lng: pktrmLl[1]},
+        {lat: brdwyLl[0], lng: brntnLl[1]},
+        {lat: nqncyLl[0], lng: nqncyLl[1]},
+        {lat: smmnlLl[0], lng: smmnlLl[1]},
+        {lat: davisLl[0], lng: davisLl[1]},
+        {lat: alfclLl[0], lng: alfclLl[1]},
+        {lat: knnclLl[0], lng: knnclLl[1]},
+        {lat: chmnlLl[0], lng: chmnlLl[1]},
+        {lat: dwnxgLl[0], lng: dwnxgLl[1]},
+        {lat: qnctrLl[0], lng: qnctrLl[1]},
+        {lat: qamnlLl[0], lng: qamnlLl[1]},
+        {lat: asmnlLl[0], lng: asmnlLl[1]},
+        {lat: wlstaLl[0], lng: wlstaLl[1]},
+        {lat: fldcrLl[0], lng: fldcrLl[1]},
+        {lat: cntsqLl[0], lng: cntsqLl[1]},
+        {lat: brntnLl[0], lng: brntnLl[1]}
+    ];
+
+    var redLinePath = new google.maps.Polyline({
+        path: redLineCoords,
+        geodesic: false,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    redLinePath.setMap(map);
 
 }
 
