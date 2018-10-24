@@ -290,40 +290,54 @@ function initMap() {
         title: 'Braintree'
     });
 
-    redLineCoords = [
-        {lat: sstatLl[0], lng: sstatLl[1]},
-        {lat: andrwLl[0], lng: andrwLl[1]},
+
+    redLineCoords1 = [
+        {lat: alfclLl[0], lng: alfclLl[1]},
+        {lat: davisLl[0], lng: davisLl[1]},
         {lat: portrLl[0], lng: portrLl[1]},
         {lat: harsqLl[0], lng: harsqLl[1]},
-        {lat: jfkLl[0], lng: jfkLl[1]},
-        {lat: shmnlLl[0], lng: shmnlLl[1]},
-        {lat: pktrmLl[0], lng: pktrmLl[1]},
-        {lat: brdwyLl[0], lng: brntnLl[1]},
-        {lat: nqncyLl[0], lng: nqncyLl[1]},
-        {lat: smmnlLl[0], lng: smmnlLl[1]},
-        {lat: davisLl[0], lng: davisLl[1]},
-        {lat: alfclLl[0], lng: alfclLl[1]},
+        {lat: cntsqLl[0], lng: cntsqLl[1]},
         {lat: knnclLl[0], lng: knnclLl[1]},
         {lat: chmnlLl[0], lng: chmnlLl[1]},
+        {lat: pktrmLl[0], lng: pktrmLl[1]},
         {lat: dwnxgLl[0], lng: dwnxgLl[1]},
+        {lat: sstatLl[0], lng: sstatLl[1]},
+        {lat: brdwyLl[0], lng: brdwyLl[1]},       
+        {lat: andrwLl[0], lng: andrwLl[1]},
+        {lat: jfkLl[0], lng: jfkLl[1]},     
+        {lat: shmnlLl[0], lng: shmnlLl[1]},
+        {lat: fldcrLl[0], lng: fldcrLl[1]},
+        {lat: smmnlLl[0], lng: smmnlLl[1]},
+        {lat: asmnlLl[0], lng: asmnlLl[1]}
+    ];
+
+    redLineCoords2 = [
+        {lat: jfkLl[0], lng: jfkLl[1]},
+        {lat: nqncyLl[0], lng: nqncyLl[1]},
+        {lat: wlstaLl[0], lng: wlstaLl[1]},
         {lat: qnctrLl[0], lng: qnctrLl[1]},
         {lat: qamnlLl[0], lng: qamnlLl[1]},
-        {lat: asmnlLl[0], lng: asmnlLl[1]},
-        {lat: wlstaLl[0], lng: wlstaLl[1]},
-        {lat: fldcrLl[0], lng: fldcrLl[1]},
-        {lat: cntsqLl[0], lng: cntsqLl[1]},
         {lat: brntnLl[0], lng: brntnLl[1]}
     ];
 
-    var redLinePath = new google.maps.Polyline({
-        path: redLineCoords,
-        geodesic: false,
+    var redLinePath1 = new google.maps.Polyline({
+        path: redLineCoords1,
+        geodesic: true,
         strokeColor: '#FF0000',
         strokeOpacity: 1.0,
-        strokeWeight: 2
+        strokeWeight: 4
     });
 
-    redLinePath.setMap(map);
+    var redLinePath2 = new google.maps.Polyline({
+        path: redLineCoords2,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 4
+    });
+
+    redLinePath1.setMap(map);
+    redLinePath2.setMap(map);
 
 }
 
