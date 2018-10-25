@@ -23,7 +23,7 @@ The map shall take up the entire page. DONE
 
     Upon clicking on your marker on the map, display an information window (a.k.a., infowindow) noting the closest MBTA Red Line subway station from where you are including the distance away in miles.
 
-    Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station.
+    Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station. DONE
 
     Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. 
 

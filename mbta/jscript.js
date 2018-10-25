@@ -6,28 +6,29 @@
 /* infoWindow is a bad variable name as we may have many ? */
 var map, infoWindow, localLat, localLong;
 var yourIcon, sstatIcon, andrwIcon, portrIcon, harsqIcon, jfkIcon, shmnlIcon, pktrmIcon, brdwyIcon, nqncyIcon, smmnlIcon, davisIcon, alfclIcon, knnclIcon, chmnlIcon, dwnxgIcon, qnctrIcon, asmnlIcon, wlstaIcon, fldcrIcon, cntsqIcon, brntnIcon;
-var sstatLl = [42.352271, -71.05524200000001];
-var andrwLl = [42.330154, -71.057655];
-var portrLl = [42.3884, -71.11914899999999];
-var harsqLl = [42.373362, -71.118956];
-var jfkLl   = [42.320685, -71.052391];
-var shmnlLl = [42.31129, -71.053331];
-var pktrmLl = [42.35639457, -71.0624242];
-var brdwyLl = [42.342622, -71.056967];
-var nqncyLl = [42.275275, -71.029583];
-var smmnlLl = [42.29312583, -71.06573796000001];
-var davisLl = [42.39674, -71.121815];
-var alfclLl = [42.395428, -71.142483];
-var knnclLl = [42.36249079, -71.08617653];
-var chmnlLl = [42.361166, -71.070628];
-var dwnxgLl = [42.355518, -71.060225];
-var qnctrLl = [42.251809, -71.005409];
-var qamnlLl = [42.233391, -71.007153];
-var asmnlLl = [42.284652, -71.06448899999999];
-var wlstaLl = [42.2665139, -71.0203369];
-var fldcrLl = [42.300093, -71.061667];
-var cntsqLl = [42.365486, -71.103802];
-var brntnLl = [42.2078543, -71.0011385];
+var sstatLl = [42.352271, -71.05524200000001, "place-sstat"];
+var andrwLl = [42.330154, -71.057655, "place-andrw"];
+var portrLl = [42.3884, -71.11914899999999, "place-portr"];
+var harsqLl = [42.373362, -71.118956, "place-harsq"];
+var jfkLl   = [42.320685, -71.052391, "place-jfk"];
+var shmnlLl = [42.31129, -71.053331, "place-shmnl"];
+var pktrmLl = [42.35639457, -71.0624242, "place-pktrm"];
+var brdwyLl = [42.342622, -71.056967, "place-brdwy"];
+var nqncyLl = [42.275275, -71.029583, "place-nqncy"];
+var smmnlLl = [42.29312583, -71.06573796000001, "place-smmnl"];
+var davisLl = [42.39674, -71.121815, "place-davis"];
+var alfclLl = [42.395428, -71.142483, "place-alfcl"];
+var knnclLl = [42.36249079, -71.08617653, "place-knncl"];
+var chmnlLl = [42.361166, -71.070628, "place-chmnl"];
+var dwnxgLl = [42.355518, -71.060225, "place-dwnxg"];
+var qnctrLl = [42.251809, -71.005409, "place-qnctr"];
+var qamnlLl = [42.233391, -71.007153, "place-qamnl"];
+var asmnlLl = [42.284652, -71.06448899999999, "place-asmnl"];
+var wlstaLl = [42.2665139, -71.0203369, "place-wlsta"];
+var fldcrLl = [42.300093, -71.061667, "place-fldcr"];
+var cntsqLl = [42.365486, -71.103802, "place-cntsq"];
+var brntnLl = [42.2078543, -71.0011385, "place-brntn"];
+var locations = [sstatLl, andrwLl, portrLl, harsqLl, jfkLl, shmnlLl, pktrmLl, brdwyLl, nqncyLl, smmnlLl, davisLl, alfclLl, knnclLl, chmnlLl, dwnxgLl, qnctrLl, qamnlLl, asmnlLl, wlstaLl, fldcrLl, cntsqLl, brntnLl];
 
 var redlineCoords1 = [];
 var redLineCoords2 = [];
@@ -51,8 +52,81 @@ function testXMLHttpRequest(){
     }
 }
 
+/* Code from https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript */
+function haversineDistance(coords1, coords2, isMiles) {
+  function toRad(x) {
+    return x * Math.PI / 180;
+  }
+
+  var lon1 = coords1[0];
+  var lat1 = coords1[1];
+
+  var lon2 = coords2[0];
+  var lat2 = coords2[1];
+
+  var R = 6371; // km
+
+  var x1 = lat2 - lat1;
+  var dLat = toRad(x1);
+  var x2 = lon2 - lon1;
+  var dLon = toRad(x2)
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+
+  if(isMiles) d /= 1.60934;
+
+  return d;
+}
+
 function nearestStation(){
-    console.log("clikkk");
+    localCoords = [localLat, localLong];
+    var closest;
+    var closeDistance = -1;
+    var closestIndex = 0;
+    var i; 
+    for (i = 0; i < locations.length; i++) {
+        if (closeDistance == -1) {
+            closest = locations[i][2];
+            closeDistance = haversineDistance(localCoords, locations[i], true);
+            closestIndex = i;
+        }
+        else {
+            tempDist = haversineDistance(localCoords, locations[i], true);
+            if (tempDist < closeDistance) {
+                closeDistance = tempDist;
+                closest = locations[i][2];
+                closestIndex = i;
+            }
+        }
+    }
+    return locations[closestIndex];
+}
+
+function nearestInfo(){
+    closestStation = nearestStation();
+    milesAway = haversineDistance(localCoords, closestStation, true);
+    console.log(milesAway);
+}
+
+function nearestPoly() {
+    closestStation = nearestStation();
+    nearestPathCoords = [
+        {lat: closestStation[0], lng: closestStation[1]}, 
+        {lat: localLat, lng: localLong}
+    ];
+        
+    var nearestPath = new google.maps.Polyline({
+        path: nearestPathCoords,
+        geodesic: true,
+        strokeColor: '#BA5211',
+        strokeOpacity: 1.0,
+        strokeWeight: 4
+    });
+
+    nearestPath.setMap(map);
 }
 
 function stationData(stopID) {
@@ -90,8 +164,10 @@ function initMap() {
         });
 
         yourIcon.addListener('click', function() {
-            nearestStation();
+            nearestInfo(); /* TODO make nearest station */
         });
+
+        nearestPoly();
 
             }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -226,8 +302,8 @@ function initMap() {
         shape: iconShapeData,
         title: 'Shawmut'
     });
-    nqncyIcon.addListener('click', function() {
-            stationData("place-nqncy");
+    smmnlIcon.addListener('click', function() {
+            stationData("place-smmnl");
     });
 
     davisIcon = new google.maps.Marker({
@@ -413,4 +489,4 @@ function initMap() {
 
 }
 
-testXMLHttpRequest()
+testXMLHttpRequest();
