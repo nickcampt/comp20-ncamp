@@ -25,6 +25,6 @@ The map shall take up the entire page. DONE
 
     Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station. DONE
 
-    Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. 
+    Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. Done
 
 Who I worked with: Tent Turner and I bounced ideas off one another throughout the whole project. I showed him the google tutorial on finding your current location.
