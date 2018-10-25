@@ -1,9 +1,3 @@
-/* access contol allow origin */
-/* check cross origin resource sharing to get around same origin policy */
-/* access-control-allow-origin */ /* this means the server can allow cross origin requests 8?
-/* the above is on the SERVER level so this is in assignment number 3 */
-
-/* infoWindow is a bad variable name as we may have many ? */
 var map, infoWindow, localLat, localLong;
 var yourIcon, sstatIcon, andrwIcon, portrIcon, harsqIcon, jfkIcon, shmnlIcon, pktrmIcon, brdwyIcon, nqncyIcon, smmnlIcon, davisIcon, alfclIcon, knnclIcon, chmnlIcon, dwnxgIcon, qnctrIcon, asmnlIcon, wlstaIcon, fldcrIcon, cntsqIcon, brntnIcon;
 var sstatLl = [42.352271, -71.05524200000001, "place-sstat", "South Station"];
