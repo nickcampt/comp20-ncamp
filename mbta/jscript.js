@@ -33,10 +33,29 @@ var locations = [sstatLl, andrwLl, portrLl, harsqLl, jfkLl, shmnlLl, pktrmLl, br
 var redlineCoords1 = [];
 var redLineCoords2 = [];
 
-function testJSON(data){
-    var logString = data;
-    console.log(logString);
-    console.log("yeey");
+function makeSchedule(stopData, someIcon){
+    console.log("getting item 0");
+    console.log(stopData);
+    var inOut = ["Southbound", "Northbound"];
+    var i;
+    var content = '<div id="clickedStation"><h2>Next 10 Trains</h2>';
+    for (i = 0; i < 10; i++) {
+        stopNum = i+1;
+
+        content += '<div><h3>' + 
+        stopNum + 
+        '</h3><h4>Arrives:</h4> ' + 
+        stopNum + stopData.data[0].attributes.arrival_time + 
+        ' <h4>Departs:</h4>' + stopData.data[0].attributes.departure_time + 
+        ' ' + 
+        inOut[stopData.data[0].attributes.direction_id] +
+        '</div>';
+        console.log(content);
+    }
+    content += '</div>';
+
+    infoWindow.setContent(content);
+    infoWindow.open(map, someIcon);
 
 }
 
@@ -132,7 +151,7 @@ function nearestPoly() {
     nearestPath.setMap(map);
 }
 
-function stationData(stopID) {
+function stationData(stopID, someIcon) {
     var requestURL = "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=";
     requestURL += stopID;
     var request = new XMLHttpRequest();
@@ -141,7 +160,7 @@ function stationData(stopID) {
     request.send();
     request.onload = function(){
         var responseData = request.response;
-        testJSON(responseData)
+        makeSchedule(responseData, someIcon)
     }
 }
 
@@ -180,6 +199,7 @@ function initMap() {
         });
 
         nearestPoly();
+        console.log("after nearestPoly");
 
             }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());
@@ -216,7 +236,7 @@ function initMap() {
         title: 'South Station'
      });
     sstatIcon.addListener('click', function() {
-            stationData("place-sstat");
+            stationData("place-sstat", this);
     });
 
     andrwIcon = new google.maps.Marker({
@@ -227,7 +247,7 @@ function initMap() {
         title: 'Andrew'
     });
     andrwIcon.addListener('click', function() {
-            stationData("place-andrw");
+            stationData("place-andrw", this);
     });
 
     portrIcon = new google.maps.Marker({
@@ -238,7 +258,7 @@ function initMap() {
         title: 'Porter Square'
     });
     portrIcon.addListener('click', function() {
-            stationData("place-portr");
+            stationData("place-portr", this);
     });
 
     harsqIcon = new google.maps.Marker({
@@ -249,7 +269,7 @@ function initMap() {
         title: 'Harvard Square'
     });
     harsqIcon.addListener('click', function() {
-            stationData("place-harsq");
+            stationData("place-harsq", this);
     });
 
     jfkIcon = new google.maps.Marker({
@@ -260,7 +280,7 @@ function initMap() {
         title: 'JFK/UMass'
     });
     jfkIcon.addListener('click', function() {
-            stationData("place-jfk");
+            stationData("place-jfk", this);
     });
 
     shmnlIcon = new google.maps.Marker({
@@ -271,7 +291,7 @@ function initMap() {
         title: 'Savin Hill'
     });
     shmnlIcon.addListener('click', function() {
-            stationData("place-shmnl");
+            stationData("place-shmnl", this);
     });
 
     pktrmIcon = new google.maps.Marker({
@@ -282,7 +302,7 @@ function initMap() {
         title: 'Park Street'
     });
     pktrmIcon.addListener('click', function() {
-            stationData("place-pktrm");
+            stationData("place-pktrm", this);
     });
 
     brdwyIcon = new google.maps.Marker({
@@ -293,7 +313,7 @@ function initMap() {
         title: 'Broadway'
     });
     brdwyIcon.addListener('click', function() {
-            stationData("place-brdwy");
+            stationData("place-brdwy", this);
     });
 
     nqncyIcon = new google.maps.Marker({
@@ -304,7 +324,7 @@ function initMap() {
         title: 'North Quincy'
     });
     nqncyIcon.addListener('click', function() {
-            stationData("place-nqncy");
+            stationData("place-nqncy", this);
     });
 
     smmnlIcon = new google.maps.Marker({
@@ -315,7 +335,7 @@ function initMap() {
         title: 'Shawmut'
     });
     smmnlIcon.addListener('click', function() {
-            stationData("place-smmnl");
+            stationData("place-smmnl", this);
     });
 
     davisIcon = new google.maps.Marker({
@@ -326,7 +346,7 @@ function initMap() {
         title: 'Davis'
     });
     davisIcon.addListener('click', function() {
-            stationData("place-davis");
+            stationData("place-davis", this);
     });
 
     alfclIcon = new google.maps.Marker({
@@ -337,7 +357,7 @@ function initMap() {
         title: 'Alewife'
     });
     alfclIcon.addListener('click', function() {
-            stationData("place-alfcl");
+            stationData("place-alfcl", this);
     });
 
     knnclIcon = new google.maps.Marker({
@@ -348,7 +368,7 @@ function initMap() {
         title: 'Kendall/MIT'
     });
     knnclIcon.addListener('click', function() {
-            stationData("place-knncl");
+            stationData("place-knncl", this);
     });
 
     chmnlIcon = new google.maps.Marker({
@@ -359,7 +379,7 @@ function initMap() {
         title: 'Charles/MGH'
     });
     chmnlIcon.addListener('click', function() {
-            stationData("place-chmnl");
+            stationData("place-chmnl", this);
     });
 
     dwnxgIcon = new google.maps.Marker({
@@ -370,7 +390,7 @@ function initMap() {
         title: 'Downtown Crossing'
     });
     dwnxgIcon.addListener('click', function() {
-            stationData("place-dwnxg");
+            stationData("place-dwnxg", this);
     });
 
     qnctrIcon = new google.maps.Marker({
@@ -381,7 +401,7 @@ function initMap() {
         title: 'Quincy Center'
     });
     qnctrIcon.addListener('click', function() {
-            stationData("place-qnctr");
+            stationData("place-qnctr", this);
     });
 
     qamnlIcon = new google.maps.Marker({
@@ -392,7 +412,7 @@ function initMap() {
         title: 'Quincy Adams'
     });
     qamnlIcon.addListener('click', function() {
-            stationData("place-qamnl");
+            stationData("place-qamnl", this);
     });
 
     asmnlIcon = new google.maps.Marker({
@@ -403,7 +423,7 @@ function initMap() {
         title: 'Ashmont'
     });
     asmnlIcon.addListener('click', function() {
-            stationData("place-asmnl");
+            stationData("place-asmnl", this);
     });
 
     wlstaIcon = new google.maps.Marker({
@@ -414,7 +434,7 @@ function initMap() {
         title: 'Wollaston'
     });
     wlstaIcon.addListener('click', function() {
-            stationData("place-wlsta");
+            stationData("place-wlsta", this);
     });
 
     fldcrIcon = new google.maps.Marker({
@@ -425,7 +445,7 @@ function initMap() {
         title: 'Fields Corner'
     });
     fldcrIcon.addListener('click', function() {
-            stationData("place-fldcr");
+            stationData("place-fldcr", this);
     });
 
     cntsqIcon = new google.maps.Marker({
@@ -436,7 +456,7 @@ function initMap() {
         title: 'Central Square '
     });
     cntsqIcon.addListener('click', function() {
-            stationData("place-cntsq");
+            stationData("place-cntsq", this);
     });
 
     brntnIcon = new google.maps.Marker({
@@ -447,7 +467,7 @@ function initMap() {
         title: 'Braintree'
     });
     brntnIcon.addListener('click', function() {
-            stationData("place-brntn");
+            stationData("place-brntn", this);
     });
 
 
@@ -498,5 +518,6 @@ function initMap() {
 
     redLinePath1.setMap(map);
     redLinePath2.setMap(map);
+
 
 }
