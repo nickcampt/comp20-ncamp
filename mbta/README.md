@@ -21,7 +21,7 @@ The map shall take up the entire page. DONE
 
     The map shall be centered on your location automatically when your geolocation is determined. DONE
 
-    Upon clicking on your marker on the map, display an information window (a.k.a., infowindow) noting the closest MBTA Red Line subway station from where you are including the distance away in miles.
+    Upon clicking on your marker on the map, display an information window (a.k.a., infowindow) noting the closest MBTA Red Line subway station from where you are including the distance away in miles. DONE
 
     Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station. DONE
 

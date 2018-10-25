@@ -6,28 +6,28 @@
 /* infoWindow is a bad variable name as we may have many ? */
 var map, infoWindow, localLat, localLong;
 var yourIcon, sstatIcon, andrwIcon, portrIcon, harsqIcon, jfkIcon, shmnlIcon, pktrmIcon, brdwyIcon, nqncyIcon, smmnlIcon, davisIcon, alfclIcon, knnclIcon, chmnlIcon, dwnxgIcon, qnctrIcon, asmnlIcon, wlstaIcon, fldcrIcon, cntsqIcon, brntnIcon;
-var sstatLl = [42.352271, -71.05524200000001, "place-sstat"];
-var andrwLl = [42.330154, -71.057655, "place-andrw"];
-var portrLl = [42.3884, -71.11914899999999, "place-portr"];
-var harsqLl = [42.373362, -71.118956, "place-harsq"];
-var jfkLl   = [42.320685, -71.052391, "place-jfk"];
-var shmnlLl = [42.31129, -71.053331, "place-shmnl"];
-var pktrmLl = [42.35639457, -71.0624242, "place-pktrm"];
-var brdwyLl = [42.342622, -71.056967, "place-brdwy"];
-var nqncyLl = [42.275275, -71.029583, "place-nqncy"];
-var smmnlLl = [42.29312583, -71.06573796000001, "place-smmnl"];
-var davisLl = [42.39674, -71.121815, "place-davis"];
-var alfclLl = [42.395428, -71.142483, "place-alfcl"];
-var knnclLl = [42.36249079, -71.08617653, "place-knncl"];
-var chmnlLl = [42.361166, -71.070628, "place-chmnl"];
-var dwnxgLl = [42.355518, -71.060225, "place-dwnxg"];
-var qnctrLl = [42.251809, -71.005409, "place-qnctr"];
-var qamnlLl = [42.233391, -71.007153, "place-qamnl"];
-var asmnlLl = [42.284652, -71.06448899999999, "place-asmnl"];
-var wlstaLl = [42.2665139, -71.0203369, "place-wlsta"];
-var fldcrLl = [42.300093, -71.061667, "place-fldcr"];
-var cntsqLl = [42.365486, -71.103802, "place-cntsq"];
-var brntnLl = [42.2078543, -71.0011385, "place-brntn"];
+var sstatLl = [42.352271, -71.05524200000001, "place-sstat", "South Station"];
+var andrwLl = [42.330154, -71.057655, "place-andrw", "Andrew"];
+var portrLl = [42.3884, -71.11914899999999, "place-portr", "Porter Square"];
+var harsqLl = [42.373362, -71.118956, "place-harsq", "Harvard Square"];
+var jfkLl   = [42.320685, -71.052391, "place-jfk", "JFK/UMass"];
+var shmnlLl = [42.31129, -71.053331, "place-shmnl", "Savin Hill"];
+var pktrmLl = [42.35639457, -71.0624242, "place-pktrm", "Park Street"];
+var brdwyLl = [42.342622, -71.056967, "place-brdwy", "Broadway"];
+var nqncyLl = [42.275275, -71.029583, "place-nqncy", "North Quincy"];
+var smmnlLl = [42.29312583, -71.06573796000001, "place-smmnl", "Shawmut"];
+var davisLl = [42.39674, -71.121815, "place-davis", "Davis"];
+var alfclLl = [42.395428, -71.142483, "place-alfcl", "Alewife"];
+var knnclLl = [42.36249079, -71.08617653, "place-knncl", "Kendall/MIT"];
+var chmnlLl = [42.361166, -71.070628, "place-chmnl", "Charles/MGH"];
+var dwnxgLl = [42.355518, -71.060225, "place-dwnxg", "Downtown Crossing"];
+var qnctrLl = [42.251809, -71.005409, "place-qnctr", "Quincy Center"];
+var qamnlLl = [42.233391, -71.007153, "place-qamnl", "Quincy Adams"];
+var asmnlLl = [42.284652, -71.06448899999999, "place-asmnl", "Ashmont"];
+var wlstaLl = [42.2665139, -71.0203369, "place-wlsta", "Wollaston"];
+var fldcrLl = [42.300093, -71.061667, "place-fldcr", "Fields Corner"];
+var cntsqLl = [42.365486, -71.103802, "place-cntsq", "Central Square"];
+var brntnLl = [42.2078543, -71.0011385, "place-brntn", "Braintree"];
 var locations = [sstatLl, andrwLl, portrLl, harsqLl, jfkLl, shmnlLl, pktrmLl, brdwyLl, nqncyLl, smmnlLl, davisLl, alfclLl, knnclLl, chmnlLl, dwnxgLl, qnctrLl, qamnlLl, asmnlLl, wlstaLl, fldcrLl, cntsqLl, brntnLl];
 
 var redlineCoords1 = [];
@@ -38,18 +38,6 @@ function testJSON(data){
     console.log(logString);
     console.log("yeey");
 
-}
-
-function testXMLHttpRequest(){
-    var requestURL = "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=place-davis";
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function(){
-        var responseData = request.response;
-        testJSON(responseData)
-    }
 }
 
 /* Code from https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript */
@@ -108,7 +96,22 @@ function nearestStation(){
 function nearestInfo(){
     closestStation = nearestStation();
     milesAway = haversineDistance(localCoords, closestStation, true);
-    console.log(milesAway);
+    var contentString = '<div id="content">' + 
+    '<div id="Station Name">' + 
+    '<h1>' + 
+    'Closest Station: ' + 
+    closestStation[3] + 
+    '</h1>' +
+    '</div>' +
+    '<div id="Distance">' +
+    '<h2>' +
+    milesAway +
+    ' miles away!' + 
+    '</h2>' +
+    '</div>' +
+    '</div>';
+    infoWindow.setContent(contentString);
+    infoWindow.open(map, yourIcon);
 }
 
 function nearestPoly() {
@@ -130,7 +133,16 @@ function nearestPoly() {
 }
 
 function stationData(stopID) {
-    console.log(stopID);
+    var requestURL = "https://chicken-of-the-sea.herokuapp.com/redline/schedule.json?stop_id=";
+    requestURL += stopID;
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function(){
+        var responseData = request.response;
+        testJSON(responseData)
+    }
 }
 
 function initMap() {
@@ -164,7 +176,7 @@ function initMap() {
         });
 
         yourIcon.addListener('click', function() {
-            nearestInfo(); /* TODO make nearest station */
+            nearestInfo();
         });
 
         nearestPoly();
@@ -488,5 +500,3 @@ function initMap() {
     redLinePath2.setMap(map);
 
 }
-
-testXMLHttpRequest();
