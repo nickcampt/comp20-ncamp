@@ -34,8 +34,6 @@ var redlineCoords1 = [];
 var redLineCoords2 = [];
 
 function makeSchedule(stopData, someIcon){
-    console.log("getting item 0");
-    console.log(stopData);
     var inOut = ["Southbound", "Northbound"];
     var i;
     var content = '<div id="clickedStation"><h2>Next 10 Trains</h2>';
@@ -50,7 +48,6 @@ function makeSchedule(stopData, someIcon){
         ' ' + 
         inOut[stopData.data[0].attributes.direction_id] +
         '</div>';
-        console.log(content);
     }
     content += '</div>';
 
@@ -199,7 +196,6 @@ function initMap() {
         });
 
         nearestPoly();
-        console.log("after nearestPoly");
 
             }, function() {
                     handleLocationError(true, infoWindow, map.getCenter());
