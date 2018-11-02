@@ -1,0 +1,29 @@
+<!-- here be html copied from Ming's Assignment page--> 
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Captain's Log</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("input").on('keydown', function(e) {
+                if (e.which == 13) {
+                    var value=$(this).val();
+                    $("#log").text(value)
+                }   
+            });
+        });
+    </script>
+</head>
+
+<body> <!-- cannot modify this body section -->
+    <h1>Captain's Log</h1>
+    <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
+    <div id="log"></div>
+</body>
+</html>
