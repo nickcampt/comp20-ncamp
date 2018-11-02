@@ -10,11 +10,22 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+        var logRay = [];
+        var storageKey = "Arghh";
+        //$("#log").html(localStorage.getItem(storageKey));
         $(document).ready(function(){
             $("input").on('keydown', function(e) {
                 if (e.which == 13) {
+                    var date = new Date();
                     var value=$(this).val();
-                    $("#log").text(value)
+                    var rayInput = date + " - " + value + "<br/>";
+                    logRay.unshift(rayInput);
+                    var finalText = "";
+                    for (var i = 0; i < logRay.length; i++) {
+                        finalText += logRay[i];
+                    }
+                    $("#log").html(finalText);
+                    localStorage.setItem(storageKey, finalText)
                 }   
             });
         });
