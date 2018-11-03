@@ -10,34 +10,30 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        var logRay = [];
+        var logString = '';
         var arrayStorageKey = "theArray";
-
-        /* makeLog takes an array and puts it into the html of the log tag */
-        function makeLog(logData) {
-            var finalText = "";
-            for (var i = 0; i < logData.length; i++) {
-                finalText += logData[i];
-            }
-            $("#log").html(finalText);
-        }
+        var oldString = '';
 
         /* initFromStorage makes the log from localstorage if such localstorage exists */
         function initFromStorage() {
+            var got = false;
             if (localStorage.getItem(arrayStorageKey) != null) {
-                console.log("got storage");
+                if (got == false ){ 
+                    oldString = localStorage.getItem(arrayStorageKey);
+                    got = true;
+                }
             }
         }
-        
+        initFromStorage();
         $(document).ready(function(){
+            $("#log").html(logString + oldString);
             $("input").on('keydown', function(e) {
                 if (e.which == 13) {
                     var date = new Date();
                     var value=$(this).val();
-                    var rayInput = date + " - " + value + "<br/>";
-                    logRay.unshift(rayInput);
-                    makeLog(logRay);
-                    localStorage.setItem(arrayStorageKey, logRay);
+                    logString = date + " - " + value + "<br/>" + logString;
+                    localStorage.setItem(arrayStorageKey, logString+oldString);
+                    $("#log").html(logString + oldString);
                 }   
             });
         });
