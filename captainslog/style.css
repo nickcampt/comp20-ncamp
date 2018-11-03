@@ -1,4 +1,8 @@
 #log {
-    border-style = dashed;
-    border-width = thick;
+    font-style: italic;
+    font-family: narrower;
+    font-weight: bold;
+    border-style: solid;
+    border-width: medium;
+    border-color: blue;
 }

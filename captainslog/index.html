@@ -11,8 +11,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         var logRay = [];
-        var storageKey = "Arghh";
-        $("#log").html(localStorage.getItem(storageKey));
+        var arrayStorageKey = "theArray";
+
+        /* makeLog takes an array and puts it into the html of the log tag */
+        function makeLog(logData) {
+            var finalText = "";
+            for (var i = 0; i < logData.length; i++) {
+                finalText += logData[i];
+            }
+            $("#log").html(finalText);
+        }
+
+        /* initFromStorage makes the log from localstorage if such localstorage exists */
+        function initFromStorage() {
+            if (localStorage.getItem(arrayStorageKey) != null) {
+                console.log("got storage");
+            }
+        }
+        
         $(document).ready(function(){
             $("input").on('keydown', function(e) {
                 if (e.which == 13) {
@@ -20,12 +36,8 @@
                     var value=$(this).val();
                     var rayInput = date + " - " + value + "<br/>";
                     logRay.unshift(rayInput);
-                    var finalText = "";
-                    for (var i = 0; i < logRay.length; i++) {
-                        finalText += logRay[i];
-                    }
-                    $("#log").html(finalText);
-                    localStorage.setItem(storageKey, finalText)
+                    makeLog(logRay);
+                    localStorage.setItem(arrayStorageKey, logRay);
                 }   
             });
         });
