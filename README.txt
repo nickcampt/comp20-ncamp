@@ -1,6 +1,6 @@
 The purpose of this git repository is so that my work can be accessed by anyone who also has access to this git repository. This makes it easy for a grader such as Ming to download my directories and see my files on his own machine. 
 
-My favorite assignment / lab was Wedo. I like the simpsons and it was a fun assignmnet without a lot of stress. It was assigned at a good time as it was when I still was not completely comfortable with web programming, but it helped me build confidence. 
+My favorite assignment / lab was Wedo. I like the Simpsons and it was a fun assignment without a lot of stress. It was assigned at a good time as it was when I still was not completely comfortable with web programming, but it helped me build confidence. 
 
 I think that I have grown an immense amount since the start of this course. I knew the inspect element / developer tools existed, but I did not know anything about how the web worked. Now I feel more comfortable explaining how request response works and what goes into the actual programming of the web. 
 
