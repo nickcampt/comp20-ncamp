@@ -1,9 +1,14 @@
-body {
-  text-align: center;
-  font: Georgia;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 H1 {
   font-weight: bold;
   font-size: 55px;
+}
+
+#map {
+  height: 100%;
 }
