@@ -2,6 +2,7 @@
 
 <head>
     <title>Nick Camp Secuirty Comp 20</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
         <h3>3: Data in the database was not secure, and anyone had access to all user data including usernames. In this case, the data was not very sensitive, but it very much could have been.</h3>
     <h1>Issues Found</h1>
         <!-- Issue one -->
-        <h3>Issue: XSS</h3>
+        <h2>Issue: XSS</h2>
         <h3>Location: 2048 game (username alert)</h3>
         <h3>Severity: Medium to High (depending on imagination of hacker)</h3>
         <h3>Description: By submitting script tags in the username alert field after the game ends, you can send your own javascript to the scores site</h3>
@@ -24,8 +25,8 @@
         <p><img src="hack1.png" alt="how I hacked"/></p>
         <p><img src="result1.png" alt="result of first hack"/></p>
         <h3>Resolution: By validating data (not allowing < or > in submissions) you can prevent hackers from sending their own script tags<h3>
-        <!-- Issue two -->
-        <h3>Issue: Fabricating a score / subimssion / CORS</h3>
+        <br></br><!-- Issue two -->
+        <h2>Issue: Fabricating a score / subimssion / CORS</h2>
         <h3>Location: Server side</h3>
         <h3>Severity: Low - Medium severity (unless you take your highscores very seriously) as you could overload the server, or at least ruin the integrity of the highscores</h3>
         <h3>Description: by using Curl I was able to fake a submission to the game server. This means that I could get any score that I wanted, putting me at the top of the scoreboard!</h3>
@@ -34,8 +35,8 @@
         <p><img src="result2.png" alt="first result of hack 2"/></p>
         <p><img src="result2again.png" alt="result of hack2"/></p>
         <h3>Resolution: By changing the way the server's CORS allowed submission, you could prevent anyone or anywhere submitting data. Instead, you could just let the valid 2048 client submit to the database.</h3>
-        <!-- Issue three -->
-        <h3>Issue: Being able to see all user data from the server / NoSQL</h3>
+        <br></br><!-- Issue three -->
+        <h2>Issue: Being able to see all user data from the server / NoSQL</h2>
         <h3>Location: Server side </h3>
         <h3>Severity: High - Very High, especially if you are working with more sensitive data than just people's names and 2048 games</h3>
         <h3>Description: In the /scores.json GET, I was able to query all the users, and I retrieved all their data in JSON format. For reference, without the query I was only able to retrieve empty JSON.</h3>
